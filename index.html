@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang ="en">  
+    <head> 
+        <meta charset="UTF-8">
+        <title>First Trial</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav id="sidebar">
+            <ul class="logo">
+                <li>
+                    <span>Viet Restaurant</span>
+                    <button onclick="toggleSidebar()" id="toggle-button"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/></svg>
+                    </button>                    
+                </li>
+            </ul>
+            
+            <ul class="Dine-in">
+                <li>
+                    <span>Dine in</span>
+                </li>
+                <li>
+                    <a href="#table-section">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-120v-122q-18-5-30-19t-14-34L40-680h25q23 0 40.5 16t19.5 39l24 265h171q33 0 56.5 23.5T400-280v40h-40v120h-60v-120H180v120h-60Zm320 0v-320H200q0-33 23.5-56.5T280-520h400q33 0 56.5 23.5T760-440H520v320h-80ZM280-600v-40q0-66 47-113t113-47v-120h80v120q66 0 113 47t47 113v40H280Zm91-80h218q-11-19-29-29.5T520-720h-80q-22 0-40 10.5T371-680Zm229 560v-120h-40v-40q0-33 23.5-56.5T640-360h172l24-265q2-23 19-39t40-16h25l-35 385q-2 20-14.5 34T840-242v122h-60v-120H660v120h-60ZM480-680Z"/></svg>
+                        <span>Table</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#menu-section">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M533-440q-32-45-84.5-62.5T340-520q-56 0-108.5 17.5T147-440h386ZM40-360q0-109 91-174.5T340-600q118 0 209 65.5T640-360H40Zm0 160v-80h600v80H40ZM720-40v-80h56l56-560H450l-10-80h200v-160h80v160h200L854-98q-3 25-22 41.5T788-40h-68Zm0-80h56-56ZM80-40q-17 0-28.5-11.5T40-80v-40h600v40q0 17-11.5 28.5T600-40H80Zm260-400Z"/></svg>
+                        <span>Menu</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#payment-section">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z"/></svg>
+                        <span>Payment</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="Take-out"> 
+                <li>
+                    <span>Take out</span>
+                </li>
+                <li>
+                    <a href="#customer-name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+                        <span>Customer Info</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#menu-section">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M533-440q-32-45-84.5-62.5T340-520q-56 0-108.5 17.5T147-440h386ZM40-360q0-109 91-174.5T340-600q118 0 209 65.5T640-360H40Zm0 160v-80h600v80H40ZM720-40v-80h56l56-560H450l-10-80h200v-160h80v160h200L854-98q-3 25-22 41.5T788-40h-68Zm0-80h56-56ZM80-40q-17 0-28.5-11.5T40-80v-40h600v40q0 17-11.5 28.5T600-40H80Zm260-400Z"/></svg>
+                        <span>Menu</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="section table-section">
+                <h1>Dinning table</h1>
+                <div class="tables">
+                    <button data-table="Table 1">Table 1</button>
+                    <button data-table="Table 2">Table 2</button>
+                    <button data-table="Table 3">Table 3</button>
+                </div>
+            </div>
+        
+            <div class="section menu-section">
+                <h1>Menu</h1>
+                <div class="menu">
+                    <button data-name="Burger" data-price="8">
+                        <span class="item-name">Burger</span> 
+                        <span class="item-price">$8</span>
+                    </button>
+
+                    <button data-name="Pizza" data-price="10">
+                        <span class="item-name">Pizza</span>
+                        <span class="item-price">$10</span>
+                    </button>
+
+                    <button data-name="Salad" data-price="6">
+                        <span class="item-name">Salad</span>
+                        <span class="item-price">$6</span>
+                    </button>
+
+                    <button data-name="Pho" data-price="18">
+                        <span class="item-name">Pho</span>
+                        <span class="item-price">$18</span>
+                    </button>
+
+                    <button data-name="Sushi" data-price="13">
+                        <span class="item-name">Sushi</span>
+                        <span class="item-price">$13</span>
+                    </button>
+
+                    <button data-name="Taco" data-price="7">
+                        <span class="item-name">Taco</span>
+                        <span class="item-price">$7</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section order-section">
+                <h1>Order</h1>
+                <div class="order">
+                    <ul class="order-list">
+<!--                what will be automatically added by script.js when the customer orders something:
+                        <li class="order-item">
+                            <span>Burger</span>
+                            <span>2</span>
+                            <span>$16</span>
+                            <button class="x-button">X</button>
+                            <button class="send-button">  </button>    <--- Phúc làm cái nút gửi order này giúp anh nha   
+                        </li>
+-->
+                    </ul>
+                    <p>Total: $0</p>
+                </div>
+            </div>
+        
+            <div class="section payment-section">
+                <h1>Payment</h1>
+                <div class="payment">
+                    <button data-method="Cash">Cash</button>
+                    <button data-method="Credit Card">Credit Card</button>
+                    <button data-method="Apple Pay">Apple Pay</button>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
