@@ -16,12 +16,12 @@ This project is built as a learning-focused but production-minded system that wi
 ## 🛣️ Future Improvement
 
 - [ ] Create Backend API built with Node.js and Express
-- [ ] Real-time order flow from frontend to backend to embedded devices and backward
+- [ ] Add Real-time order flow from frontend to backend to embedded devices and backward
 - [ ] Design UI for embedded Touchscreen (Kitchen receiving orders)
 - [ ] Implement RFID authentication for staff access
-- [ ] WebSocket for real-time updates
-- [ ] Add database for order history and anlytics
-- [ ] Add Real-Time robots that deliver food
+- [ ] Add WebSocket for real-time updates
+- [ ] Add database for order history and analytics
+- [ ] Build Real-Time robots that deliver food
 
 
 ---
