@@ -64,6 +64,8 @@ orderDisplayedArea.addEventListener("click", function(event) {
     }
 
     else if (event.target.classList.contains("send-button")) {
+        const string = event.target.dataset.string;
+        sendOrderToServer(string);
         console.log("... sent");
         return;
     }
@@ -89,12 +91,10 @@ function addItemtoOrder (name, price) {
         return;
     }
 
-    const currentOrder = ordersByTable[selectedTable];
-
-    if (currentOrder[name])
-        currentOrder[name].quantity += 1;
+    if (ordersByTable[selectedTable][name])
+        ordersByTable[selectedTable][name].quantity += 1;
     else {
-        currentOrder[name] = {
+        ordersByTable[selectedTable][name] = {
             price: price,
             quantity: 1
         };
@@ -146,12 +146,10 @@ function renderOrder() {
     if (!selectedTable) 
         return;
 
-    const currentOrder = ordersByTable[selectedTable];
-
     let total = 0;
 
-    for (let itemName in currentOrder) {
-        const item = currentOrder[itemName];
+    for (let itemName in ordersByTable[selectedTable]) {
+        const item = ordersByTable[selectedTable][itemName];
         const li = document.createElement("li");
         li.classList.add("order-item");
 
@@ -239,3 +237,35 @@ function toggleSidebar() {
     sidebar.classList.toggle("collapsed");
     toggleButton.classList.toggle("rotate");
 }
+
+async function sendOrderToServer(itemName) {
+    if (!selectedTable)
+        return;
+    
+    const orderInfo = {
+        table: selectedTable,
+        item: itemName,
+        quantity: ordersByTable[selectedTable][itemName].quantity,
+        price: ordersByTable[selectedTable][itemName].price
+    };
+
+    try {
+        const response = await fetch('/api/orders/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderInfo)
+        });
+
+        if (!response.ok)
+            throw new Error(`Failed to send order: ${response.status}`);
+        console.log('Order has been sent to the server');
+    }
+    catch(error) {
+        console.error('Error sending orderr: ', error);
+    }
+
+}
+
+

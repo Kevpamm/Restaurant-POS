@@ -10,12 +10,13 @@ This project is built as a learning-focused but production-minded system that wi
 
 - Table selection and management
 - Order creation, update, and removal
+- Order can now be sent from the Website (Frontend) to Server (Backend)
 
 ---
 
-## 🛣️ Future Improvement
+## 🛣️ Road Map & Future Improvement
 
-- [ ] Create Backend API built with Node.js and Express
+- [x] Create Backend API built with Node.js and Express
 - [ ] Real-time order flow from frontend to backend to embedded devices and backward
 - [ ] Design UI for embedded Touchscreen (Kitchen receiving orders)
 - [ ] Implement RFID authentication for staff access

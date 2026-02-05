@@ -1,0 +1,27 @@
+{
+  "name": "restaurant-pos",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Kevpamm/Restaurant-POS#readme",
+  "bugs": {
+    "url": "https://github.com/Kevpamm/Restaurant-POS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kevpamm/Restaurant-POS.git"
+  },
+  "license": "ISC",
+  "author": "Kevin Pham",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
