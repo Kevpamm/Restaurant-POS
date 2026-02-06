@@ -49,29 +49,29 @@ Fix: Multiply the item price by the quantity before sending to the server.
 ---
 
 ## 🏗️ System Architecture (High Level)
-
-### Web Frontend (Browser/JS UI)
+```
+ [Web Frontend (Browser/JS UI)]
               |   ↑
  Send orders  |   | 
  to server    |   | Receive order status
               |   | from the server
               ↓   |
-### Server (Node.js + Express)
+ [Server (Node.js + Express)]
               |   ↑
  Store orders |   | 
               |   | Receive orders status
  Send orders  |   | from devices
  to devices   |   | 
               ↓   | 
-### Embedded Devices (ESP8266)
+ [Embedded Devices (ESP8266)]
               |   ↑
 Display orders|   |  
 in real-time  |   | 
 to screen     |   | Staff updates orders status
               |   | via touchscreen
               ↓   |
-### Kitchen Staff / Screen (ST7796S)
-
+ [Kitchen Staff / Screen (ST7796S)]
+```
 ---
 
 ## 🧰 Tech Stack
