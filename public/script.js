@@ -66,7 +66,6 @@ orderDisplayedArea.addEventListener("click", function(event) {
     else if (event.target.classList.contains("send-button")) {
         const string = event.target.dataset.string;
         sendOrderToServer(string);
-        console.log("... sent");
         return;
     }
 
@@ -214,7 +213,6 @@ function renderOrder() {
 
     displayTotal(total);
 }
-
 
 function removeItem(string) {
 

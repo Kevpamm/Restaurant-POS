@@ -27,19 +27,50 @@ This project is built as a learning-focused but production-minded system that wi
 
 ---
 
+## 🐞 Spotted Bugs to be fixed
+
+### User Experience
+
+- App does not display which table is being selected
+- Order does not have an option to reduce or increase items' quantity
+- An item can be sent multiple times to the server
+- Item status from the kitchen is missing ('pending', 'making', 'ready')
+
+### User Interface
+
+- Sidebar-collapse button does not 'middle align' with the Restaurant Logo
+- Categories are not covered or are partially covered when the sidebar is collapsed
+- Dine-in section and Take-out section are too close to each other
+
+### Logic Bug:
+- Backend receives only the price of one item instead of the subtotal.
+Fix: Multiply the item price by the quantity before sending to the server.
+
+---
+
 ## 🏗️ System Architecture (High Level)
 
-```
-[ Web Frontend ]
-      |   ↑
-      |   | HTTP / JSON
-      ↓   | 
-[ Node.js + Express Backend ]
-      |   ↑
-      |   | WiFi / HTTP / MQTT (planned)
-      ↓   | 
-[ Embedded Device (ESP8266 + Display) ]
-```
+### Web Frontend (Browser/JS UI)
+              |   ↑
+ Send orders  |   | 
+ to server    |   | Receive order status
+              |   | from the server
+              ↓   |
+### Server (Node.js + Express)
+              |   ↑
+ Store orders |   | 
+              |   | Receive orders status
+ Send orders  |   | from devices
+ to devices   |   | 
+              ↓   | 
+### Embedded Devices (ESP8266)
+              |   ↑
+Display orders|   |  
+in real-time  |   | 
+to screen     |   | Staff updates orders status
+              |   | via touchscreen
+              ↓   |
+### Kitchen Staff / Screen (ST7796S)
 
 ---
 
@@ -49,14 +80,14 @@ This project is built as a learning-focused but production-minded system that wi
 - HTML, CSS, JavaScript
 - DOM-based UI logic
 
-### Backend (In Progress)
+### Backend
 - Node.js
 - Express.js
 - RESTful API design
 
 ### Embedded / Hardware (Planned / In Progress)
 - ESP8266 (The chip that manages how the kitchen receives orders)
-- 4.0" SPI Touchscreen and LCD display (Kitchen screen display)
+- 4.0" ST7796S SPI Touchscreen and LCD display (Kitchen screen display)
 - Arduino Uno R4 Wifi (The brain of the robots that deliver food)
 - Arduino IDE (To programme the above hardware)
 ---
