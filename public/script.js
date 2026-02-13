@@ -261,7 +261,7 @@ async function sendOrderToServer(itemName) {
         console.log('Order has been sent to the server');
     }
     catch(error) {
-        console.error('Error sending orderr: ', error);
+        console.error('Error sending order: ', error);
     }
 
 }
