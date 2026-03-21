@@ -33,17 +33,17 @@ This project is built as a learning-focused but production-minded system that wi
 
 - [ ] App does not display which table is being selected
 - [ ] Order does not have an option to reduce or increase items' quantity
-- [ ] An item can be sent multiple times to the server
-- [x] Item status from the kitchen is missing ('pending', 'making', 'ready')
+- [X] An item can be sent multiple times to the server
+- [X] Item status from the kitchen is missing ('pending', 'making', 'ready')
 
 ### User Interface
 
-- Sidebar-collapse button does not 'middle align' with the Restaurant Logo
-- Categories are not covered or are partially covered when the sidebar is collapsed
-- Dine-in section and Take-out section are too close to each other
+- [ ] Sidebar-collapse button does not 'middle align' with the Restaurant Logo
+- [ ] Categories are not covered or are partially covered when the sidebar is collapsed
+- [ ] Dine-in section and Take-out section are too close to each other
 
 ### Logic Bug:
-- Backend receives only the price of one item instead of the subtotal.
+- [X] Backend receives only the price of one item instead of the subtotal.
 Fix: Multiply the item price by the quantity before sending to the server.
 
 ---

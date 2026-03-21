@@ -52,6 +52,8 @@ export function selectTable(tableName, ordersByTable, selectedTable, orderDispla
  */
 
 export function addItemtoOrder (name, price, ordersByTable, selectedTable, orderDisplayedArea) {
+    let orderDuplicateCount = 2;
+    let sudoName = name;
     if (!selectedTable) {
         alert("Please select a table first.");
         return;
@@ -62,16 +64,28 @@ export function addItemtoOrder (name, price, ordersByTable, selectedTable, order
     //     alert("This item has already been sent to the server. Please wait for the order to be processed before making changes.");
     //     return;
     // }
-    if (ordersByTable[selectedTable][name])
-        ordersByTable[selectedTable][name].quantity += 1;
-    else {
-        ordersByTable[selectedTable][name] = {
+    while (ordersByTable[selectedTable][sudoName] && checkIfItemIsSent(ordersByTable[selectedTable][sudoName])) {
+        sudoName = name + " " + orderDuplicateCount;
+        orderDuplicateCount++;
+    }
+    if (ordersByTable[selectedTable][sudoName] && !checkIfItemIsSent(ordersByTable[selectedTable][sudoName]))
+        ordersByTable[selectedTable][sudoName].quantity += 1;
+
+    else if (!ordersByTable[selectedTable][sudoName]) {
+        ordersByTable[selectedTable][sudoName] = {
             price: price,
             quantity: 1,
-            status: "pending"
+            status: ""
         };
     }
+    console.log('Order object: ', ordersByTable);
     renderOrder(ordersByTable, selectedTable, orderDisplayedArea);
+}
+export function checkIfItemIsSent(item) {
+    if(item.status === "pending" || item.status === "preparing" || item.status === "ready") {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -117,7 +131,14 @@ export function renderOrder(ordersByTable, selectedTable, orderDisplayedArea) {
     for (let itemName in ordersByTable[selectedTable]) {
         const item = ordersByTable[selectedTable][itemName];
         const li = document.createElement("li");
-        li.classList.add("order-item");
+
+        if(checkIfItemIsSent(item)) {       
+            li.classList.add("sent-item");
+        }
+        else {
+            li.classList.add("order-item");
+        }
+        
         li.dataset.name = itemName;
 
         const itemNameSpan = document.createElement("span");

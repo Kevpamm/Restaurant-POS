@@ -79,6 +79,7 @@ orderDisplayedArea.addEventListener("click", function(event) {
         const item = event.target.closest(".order-item");
         item.className = "sent-item";
         const itemName = item.dataset.name;
+        ordersByTable[selectedTable][itemName].status = "pending";
 
 
         const payload = buildPayload(itemName, ordersByTable, selectedTable);
