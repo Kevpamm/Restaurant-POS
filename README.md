@@ -10,14 +10,15 @@ This project is built as a learning-focused but production-minded system that wi
 
 - Table selection and management
 - Order creation, update, and removal
-- Order can now be sent from the Website (Frontend) to Server (Backend)
+- Orders can now be sent from the Website (Frontend) to Server (Backend)
+- Orders are now sent via WebSocket protocols (real-time updates), switching back to HTTP protocol if a WebSocket error occurs
 
 ---
 
 ## 🛣️ Road Map & Future Improvement
 
 - [x] Create Backend API built with Node.js and Express
-- [ ] Add Websocket for Real-time order flow from frontend to backend to embedded devices and backward
+- [x] Add WebSocket for Real-time order flow from frontend to backend to embedded devices and backward
 - [ ] Design UI for embedded Touchscreen (Kitchen receiving orders)
 - [ ] Implement RFID authentication for staff access
 - [ ] Add database for order history and analytics
@@ -30,10 +31,10 @@ This project is built as a learning-focused but production-minded system that wi
 
 ### User Experience
 
-- App does not display which table is being selected
-- Order does not have an option to reduce or increase items' quantity
-- An item can be sent multiple times to the server
-- Item status from the kitchen is missing ('pending', 'making', 'ready')
+- [ ] App does not display which table is being selected
+- [ ] Order does not have an option to reduce or increase items' quantity
+- [ ] An item can be sent multiple times to the server
+- [x] Item status from the kitchen is missing ('pending', 'making', 'ready')
 
 ### User Interface
 

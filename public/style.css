@@ -164,7 +164,7 @@ h1 {
     font-weight: bold;
 }
 .menu .item-price {
-    opacity: 0.85;
+    opacity: 10;
     margin-top: 4px;
 }
 
@@ -190,22 +190,22 @@ h1 {
     font-size: 16px;
 }
 
-.item-name {
+.order-list .order-item .item-name {
     font-weight: 600;
     padding-right: 10px;
 }
 
-.item-quantity {
+.order-list .order-item .item-quantity {
     color: #666;
 }
 
-.item-subtotal {
+.order-list .order-item .item-subtotal {
     padding: 12px 12px;
     margin-right: auto;
     font-weight: bold;
 }
 
-.item-x-icon {
+.order-list .order-item .item-x-icon {
     padding: 12px 12px;
     background-color: var(--base-clr);
     border: none;
@@ -213,26 +213,13 @@ h1 {
     cursor: pointer;
 }
 
-.item-x-icon:hover {
+.order-list .order-item .item-x-icon:hover {
     background-color:#e30303;
     color: rgb(255, 255, 255);
 }
 
-/* .x-button {
-    padding: 12px 20px;
-    background: none;
-    border: none;
-    color: rgb(255, 38, 0);
-    font-size: 20px;
-    font-weight: bold;  
-    cursor: pointer;
-}
 
-.x-button:hover {
-    color: darkred;
-} */
-
-.send-button {
+.order-list .order-item .send-button {
     padding: 12px 12px;
     background-color: var(--base-clr);
     border: none;
@@ -241,15 +228,62 @@ h1 {
     transition: background-color 0.0s;
 }
 
-.send-button:hover {
+.order-list .order-item .send-button:hover {
     background-color: #4A90E2;
     color: rgb(255, 255, 255);
 }
 
-.send-button:active {
+.order-list .order-item .send-button:active {
     background-color: #3378d1;
     color: rgb(255, 255, 255);
 }
+
+.sent-btn {
+    background-color: gray;
+    color:#000000;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.order-list .sent-item {
+    opacity: 0.6;
+    background-color: #d0d0d0;
+    display: flex;
+    gap: 0px;
+    align-items: center;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+
+}
+
+.order-list .sent-item span {
+    font-size: 16px;
+}
+
+.order-list .sent-item .item-name {
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.order-list .sent-item .item-quantity {
+    color: #666;
+}
+
+.order-list .sent-item .item-subtotal {
+    padding: 12px 12px;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.order-list .sent-item .item-x-icon {
+    padding: 12px 12px;
+}
+
+.order-list .sent-item .send-button {
+    padding: 12px 12px;
+}
+
 
 .payment {
     display: flex;
@@ -280,3 +314,4 @@ button:hover {
 button:active {
     background-color: #d0d0d0;
 }
+
