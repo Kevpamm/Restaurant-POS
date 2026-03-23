@@ -59,11 +59,6 @@ export function addItemtoOrder (name, price, ordersByTable, selectedTable, order
         return;
     }
 
-    //Check if the item has been sent to the server, if so, we cannot change the quantity of the item in the order
-    // if (ordersByTable[selectedTable][name] && ordersByTable[selectedTable][name].status === "pending") {
-    //     alert("This item has already been sent to the server. Please wait for the order to be processed before making changes.");
-    //     return;
-    // }
     while (ordersByTable[selectedTable][sudoName] && checkIfItemIsSent(ordersByTable[selectedTable][sudoName])) {
         sudoName = name + " " + orderDuplicateCount;
         orderDuplicateCount++;
@@ -81,6 +76,15 @@ export function addItemtoOrder (name, price, ordersByTable, selectedTable, order
     console.log('Order object: ', ordersByTable);
     renderOrder(ordersByTable, selectedTable, orderDisplayedArea);
 }
+
+/**
+ * This function checks if an item has been sent to the server.
+ * An item is considered sent if its status is "pending", "preparing", or "ready".
+ * This function is used in the addItemToOrder function and renderOrder function
+ * 
+ * @param {Object} item - the item that the user adds to the order to check
+ * @returns {boolean} - true if the item has been sent, false otherwise
+ */
 export function checkIfItemIsSent(item) {
     if(item.status === "pending" || item.status === "preparing" || item.status === "ready") {
         return true;

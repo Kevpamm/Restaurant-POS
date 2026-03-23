@@ -38,7 +38,10 @@ WebSocket.on('request', (wsrequest) => {
     const WSserver = wsrequest.accept();
 
     console.log((new Date()) + '\n\t>> Accepted connection from origin: ' + wsrequest.origin + '\n');
-    wsclients.push(wsrequest.remoteAddress);
+    wsclients.push(WSserver);
+    wsclients.forEach(client => {
+        console.log('Client IP: ', client.remoteAddress);
+    });
 
     WSserver.on('message', (clientMessage) => {
         console.log('Received message from client: ', clientMessage);
@@ -52,16 +55,17 @@ WebSocket.on('request', (wsrequest) => {
         catch (error) {
             console.error('Error parsing client message: ', error);
         }
-        // wsclients.forEach((client) => {
-        //     WSserver.send(clientMessage.utf8Data);
-        // });
+        wsclients.forEach((client) => {
+            client.send(clientMessage.utf8Data);
+        });
     });
 
     WSserver.on('close', (Code, reason) => {
         console.log(new Date() + `: \n\t>> Client: ${wsrequest.origin} | IP ${wsrequest.remoteAddress} disconnected.\n\t   Code: ${Code} | Reason: ${reason}\n`);
-        wsclients = wsclients.slice(wsclients.indexOf(wsrequest.remoteAddress), 1);
+        wsclients = wsclients.slice(wsclients.indexOf(WSserver), 1);
+        console.log('Current connected clients: ', wsclients);
     })
-});
+})
 
 
 
