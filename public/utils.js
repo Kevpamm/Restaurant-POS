@@ -49,10 +49,11 @@ export function selectTable(tableName, ordersByTable, selectedTable, orderDispla
  * @param {Object} ordersByTable - an object containing orders for all tables
  * @param {string} selectedTable - the name of the currently selected table
  * @param {HTMLUListElement} orderDisplayedArea - the DOM element where the order will be rendered and displayed
- * @returns {void}
+ * @param {number} itemCount - a counter to generate unique codeNum for each item in the order
+ * @returns {number} - the updated item count
  */
 
-export function addItemtoOrder (name, price, ordersByTable, selectedTable, orderDisplayedArea) {
+export function addItemtoOrder (name, price, ordersByTable, selectedTable, orderDisplayedArea, itemCount) {
     let orderDuplicateCount = 2;
     let sudoName = name;
     if (!selectedTable) {
@@ -68,14 +69,17 @@ export function addItemtoOrder (name, price, ordersByTable, selectedTable, order
         ordersByTable[selectedTable][sudoName].quantity += 1;
 
     else if (!ordersByTable[selectedTable][sudoName]) {
+        itemCount++;
         ordersByTable[selectedTable][sudoName] = {
             price: price,
             quantity: 1,
-            status: ""
+            status: "",
+            codeNum: itemCount
         };
     }
     console.log('Order object: ', ordersByTable);
     renderOrder(ordersByTable, selectedTable, orderDisplayedArea);
+    return itemCount;
 }
 
 /**
@@ -231,7 +235,8 @@ export function buildPayload(itemName, ordersByTable, selectedTable) {
         item: itemName,
         quantity: ordersByTable[selectedTable][itemName].quantity,
         price: ordersByTable[selectedTable][itemName].price,
-        status: ordersByTable[selectedTable][itemName].status
+        status: ordersByTable[selectedTable][itemName].status,
+        codeNum: ordersByTable[selectedTable][itemName].codeNum
      };
     return payload;
 }

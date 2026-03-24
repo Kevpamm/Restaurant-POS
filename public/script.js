@@ -4,7 +4,9 @@ const tableButtons = document.querySelectorAll(".tables button");
 const menuButtons = document.querySelectorAll(".menu button");
 const orderDisplayedArea = document.querySelector(".order-list");
 const ordersByTable = {};
+let itemCount = 0; // to generate unique codeNum for each item in the order
 import { renderOrder, addItemtoOrder, removeItem, buildPayload, HTTPSendOrderToServer } from './utils.js';
+
 let ws = new WebSocket("ws://localhost:5000");
 
 ws.addEventListener('open', () => {
@@ -51,12 +53,13 @@ menuButtons.forEach(button => {
             return;
         }
 
-        addItemtoOrder(
+        itemCount = addItemtoOrder(
             button.dataset.name, // item name
             Number(button.dataset.price), // item price
             ordersByTable,
             selectedTable,
-            orderDisplayedArea
+            orderDisplayedArea,
+            itemCount
         );
     });
 });
