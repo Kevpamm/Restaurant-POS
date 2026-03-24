@@ -35,15 +35,15 @@ WebSocket.on('request', (wsrequest) => {
         return;
     }
 
-    const WSserver = wsrequest.accept();
+    const WSconnection = wsrequest.accept();
 
     console.log((new Date()) + '\n\t>> Accepted connection from origin: ' + wsrequest.origin + '\n');
-    wsclients.push(WSserver);
+    wsclients.push(WSconnection);
     wsclients.forEach(client => {
         console.log('Client IP: ', client.remoteAddress);
     });
 
-    WSserver.on('message', (clientMessage) => {
+    WSconnection.on('message', (clientMessage) => {
         console.log('Received message from client: ', clientMessage);
         console.log('Client message type: ', clientMessage.type);
         console.log('Client message data: ', clientMessage.utf8Data);
@@ -55,14 +55,16 @@ WebSocket.on('request', (wsrequest) => {
         catch (error) {
             console.error('Error parsing client message: ', error);
         }
-        wsclients.forEach((client) => {
+
+        const wsAudience = wsclients.filter(clients => clients !== WSconnection);
+        wsAudience.forEach((client) => {
             client.send(clientMessage.utf8Data);
         });
     });
 
-    WSserver.on('close', (Code, reason) => {
+    WSconnection.on('close', (Code, reason) => {
         console.log(new Date() + `: \n\t>> Client: ${wsrequest.origin} | IP ${wsrequest.remoteAddress} disconnected.\n\t   Code: ${Code} | Reason: ${reason}\n`);
-        wsclients = wsclients.slice(wsclients.indexOf(WSserver), 1);
+        wsclients = wsclients.slice(wsclients.indexOf(WSconnection), 1);
         console.log('Current connected clients: ', wsclients);
     })
 })

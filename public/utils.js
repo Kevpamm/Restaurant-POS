@@ -7,13 +7,14 @@
  * This module contains utility functions for the restaurant POS system.    
  * The functions included in this module are:
  *  1. selectTable: select a table and render its order
- *  2. addItemToOrder: add items to orders 
- *  3. removeItemFromOrder: remove items from orders
- *  4. renderOrder: render orders for the selected table in the order display area  
- *  5. displayTotal: display total price a table needs to pay in the payment section
- *  6. buildPayload: build the payload, which is the orders of the current table, to send over the wire
- *  7. HTTPSendOrderToServer: send orders to the backend server via HTTP POST 
- *  8. toggleSidebar: toggle the visibility of the sidebar
+ *  2. addItemToOrder: add items to orders
+ *  3. checkIfItemIsSent: check if an item has been sent to the server 
+ *  4. removeItemFromOrder: remove items from orders
+ *  5. renderOrder: render orders for the selected table in the order display area  
+ *  6. displayTotal: display total price a table needs to pay in the payment section
+ *  7. buildPayload: build the payload, which is the orders of the current table, to send over the wire
+ *  8. HTTPSendOrderToServer: send orders to the backend server via HTTP POST 
+ *  9. toggleSidebar: toggle the visibility of the sidebar
  * 
  * Each function is documented with its parameters and return values.
  */

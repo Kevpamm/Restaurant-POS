@@ -14,10 +14,10 @@ ws.addEventListener('open', () => {
 ws.addEventListener('message', (serverMessage) => {
     try {
         ///parse string using JSON.parse() once receive JSON string from the server, and update the UI accordingly
-        const updatedOrder = JSON.parse(serverMessage);
+        const updatedOrder = JSON.parse(serverMessage.data);
         console.log('Order update received: ', updatedOrder);
-        updatedOrder.status;
-        updatedOrder.item;
+        console.log('Updated order status: ', updatedOrder.status);
+        console.log('Updated order item: ', updatedOrder.item);
         // Here you can add code to update the UI based on the received message
 
     } catch (error) {
